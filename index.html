@@ -260,5 +260,34 @@ function addToCart(){
  window.location.href="mailto:contact@azyro.fr?subject=Commande%20AZYRO&body="+body;
 }
 </script>
-</body>
+<script>
+document.addEventListener("click", function(e) {
+  const btn = e.target.closest("button, a");
+  if (!btn) return;
+
+  const texte = btn.textContent.trim().toLowerCase();
+  if (!texte.includes("acheter")) return;
+
+  const carte = btn.closest("article, .product-card, .card, section, div");
+  const contenu = (carte ? carte.innerText : "").toLowerCase();
+
+  let lien = "";
+
+  if (contenu.includes("t-shirt knit")) {
+    lien = "https://buy.stripe.com/test_eVq14p61sggc5uYbEQaZi00";
+  } 
+  else if (contenu.includes("veste") && contenu.includes("pantalon")) {
+    lien = "https://buy.stripe.com/test_6oU3cxblM3tqbTmdMYaZi01";
+  } 
+  else if (contenu.includes("performance")) {
+    lien = "https://buy.stripe.com/test_eVqdRb0H8bZWe1u7oAaZi02";
+  }
+
+  if (lien) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    window.location.href = lien;
+  }
+}, true);
+</script></body>
 </html>
