@@ -255,9 +255,11 @@ function closeCart(){document.getElementById("modal").classList.remove("open")}
 function addToCart(){
  count++;
  document.getElementById("count").textContent=count;
- const size=document.getElementById("size").value;
- const body=encodeURIComponent("Bonjour AZYRO,\n\nJe souhaite commander : "+selectedProduct+"\nPrix : "+selectedPrice+"\nTaille : "+size);
- window.location.href="mailto:contact@azyro.fr?subject=Commande%20AZYRO&body="+body;
+function addToCart(){
+  count++;
+  document.getElementById("count").textContent=count;
+  document.getElementById("modal").classList.remove("open");
+}
 }
 </script>
 <script>
