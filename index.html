@@ -250,7 +250,20 @@ function openProduct(name,price){
  document.getElementById("modalPrice").textContent=price;
  document.getElementById("modal").classList.add("open");
 }
-function openCart(){document.getElementById("modalTitle").textContent="TON PANIER";document.getElementById("modalPrice").textContent=count?count+" article(s) sélectionné(s).":"Ton panier est vide.";document.getElementById("modal").classList.add("open")}
+function function openCart(){
+  if(count === 0){
+    alert("Ton panier est vide.");
+    return;
+  }
+
+  document.getElementById("modalTitle").textContent = "TON PANIER";
+  document.getElementById("modalPrice").textContent = count + " article(s) dans ton panier.";
+
+  document.getElementById("size").style.display = "none";
+  document.querySelector(".btn.full").style.display = "none";
+
+  document.getElementById("modal").classList.add("open");
+}{document.getElementById("modalTitle").textContent="TON PANIER";document.getElementById("modalPrice").textContent=count?count+" article(s) sélectionné(s).":"Ton panier est vide.";document.getElementById("modal").classList.add("open")}
 function closeCart(){document.getElementById("modal").classList.remove("open")}
 function addToCart(){
  count++;
